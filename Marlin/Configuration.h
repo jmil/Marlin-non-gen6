@@ -23,8 +23,8 @@
 #define THERMISTORBED 1
 
 //// Calibration variables
-// X, Y, Z, E steps per unit - Metric Prusa Mendel with Wade extruder:
-float axis_steps_per_unit[] = {40, 40, 3333.92,76.2}; 
+// X, Y, Z, E steps per unit - Metric Prusa Mendel with Hinged Greg's Wade extruder:
+float axis_steps_per_unit[] = {52.913851209772999, 52.913851209772999, 160,124.530011898862}; 
 // Metric Prusa Mendel with Makergear geared stepper extruder:
 //float axis_steps_per_unit[] = {80,80,3200/1.25,1380}; 
 // MakerGear Hybrid Prusa Mendel:
