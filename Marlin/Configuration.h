@@ -77,12 +77,12 @@ const bool min_software_endstops = false; //If true, axis won't move to coordina
 const bool max_software_endstops = true;  //If true, axis won't move to coordinates greater than the defined lengths below.
 const int X_MAX_LENGTH = 200;
 const int Y_MAX_LENGTH = 200;
-const int Z_MAX_LENGTH = 100;
+const int Z_MAX_LENGTH = 130;
 
 //// MOVEMENT SETTINGS
 const int NUM_AXIS = 4; // The axis order in all axis related arrays is X, Y, Z, E
-float max_feedrate[] = {200000, 200000, 250, 500000};
-float homing_feedrate[] = {1500,1500,120};
+float max_feedrate[] = {200000, 200000, 300, 500000};
+float homing_feedrate[] = {1500,1500,300};
 bool axis_relative_modes[] = {false, false, false, false};
 
 
