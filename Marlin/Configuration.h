@@ -24,7 +24,17 @@
 
 //// Calibration variables
 // X, Y, Z, E steps per unit - Metric Prusa Mendel with Hinged Greg's Wade extruder:
-float axis_steps_per_unit[] = {52.913851209772999, 52.913851209772999, 160,124.530011898862}; 
+// SloateBot:
+// X and Y axes are 19.25 mm pitch diameter, SDP-SI.com #A6M35M012DF1005, which gives us
+//    C=19.25pi mm per rev. At 1/2 stepping that is 400 steps per rev. so then we have 400/(19.25pi) = 6.614231401221625 stepspermm
+//    At 1/4 stepping that is 800 steps per rev. so then we have 800/(19.25pi) = 13.22846280244325 stepspermm
+//    At 1/16th stepping that is 3200/(19.25pi) = 52.913851209772999 stepspermm.
+// Z-axis: 1.8 degree is 200 steps per revolution, 1 revolution is 1.25 mm (z-rod pitch), at 1/16th stepping
+//    we have 3200 steps/1.25 mm to give 2560 stepspermm
+// E-axis: 7.25 mm is diameter of hobbed bolt, so C = 7.25pi per rev. At 1/16th stepping this is: 800/(7.25pi), but we have
+//    hinged wade extruder, so this is converted 43/10 ratio. I think these are all wrong anyway... just do 4x the quarter stepping
+//    we had before
+float axis_steps_per_unit[] = {52.913851209772999, 52.913851209772999, 2560, 498.120047595448};
 // Metric Prusa Mendel with Makergear geared stepper extruder:
 //float axis_steps_per_unit[] = {80,80,3200/1.25,1380}; 
 // MakerGear Hybrid Prusa Mendel:
@@ -75,8 +85,9 @@ const bool INVERT_E_DIR = true;
 
 const bool min_software_endstops = false; //If true, axis won't move to coordinates less than zero.
 const bool max_software_endstops = true;  //If true, axis won't move to coordinates greater than the defined lengths below.
-const int X_MAX_LENGTH = 200;
-const int Y_MAX_LENGTH = 200;
+// With 40 mm fan we can only go max of 170 mm on x-axis
+const int X_MAX_LENGTH = 170;
+const int Y_MAX_LENGTH = 190;
 const int Z_MAX_LENGTH = 130;
 
 //// MOVEMENT SETTINGS
